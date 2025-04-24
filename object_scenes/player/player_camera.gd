@@ -1,0 +1,27 @@
+extends Camera2D
+
+@onready var parent = get_parent()
+
+var previousCamVec : Vector2i = Vector2i(-999,-999)
+
+func _process(delta: float) -> void:
+	
+	var camVec :Vector2i = Vector2i.ZERO
+	camVec.x = int(parent.global_position.x) / 640
+	camVec.y = int(parent.global_position.y) / 640
+	
+	if parent.global_position.x < 0:
+		camVec.x -= 1
+	if parent.global_position.y < 0:
+		camVec.y -= 1
+	
+	if previousCamVec != camVec:
+		previousCamVec = camVec
+		get_tree().paused = true
+		var tween :Tween= get_tree().create_tween().bind_node(self)
+		tween.tween_property( self, "global_position", (Vector2(camVec) * 640) + Vector2(320,320), 0.4 ).set_trans(Tween.TRANS_LINEAR)
+		await tween.finished
+		get_tree().paused = false
+		
+		parent.checkPoint = parent.global_position
+		
