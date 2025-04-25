@@ -69,6 +69,8 @@ func _get_transition(delta):
 			if parent.velocity.y > 1:
 				return states.fall
 			
+			if !parent.canSlide:
+				return
 			if Input.is_action_pressed("crouch"):
 				return states.crouch
 			
@@ -87,6 +89,8 @@ func _get_transition(delta):
 				return states.fall
 			
 			if Input.is_action_pressed("crouch"):
+				if !parent.canSlide:
+					return
 				var dir = int( Input.is_action_pressed("move_right") ) - int( Input.is_action_pressed("move_left") )
 				if abs(parent.velocity.x) > 2.0 or parent.checkCrouchGaps() != dir * -1:
 					return states.slide

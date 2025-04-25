@@ -13,6 +13,7 @@ var checkPoint :Vector2 = Vector2.ZERO
 
 ## Player Abilities ##
 @export var canWallJump :bool = false
+@export var canSlide :bool = false
 
 
 ## yeah ##
@@ -148,6 +149,7 @@ func slide(delta):
 	if isOnFloor:
 		coyoteDelayTimer = 0.1
 		slideOffFloorTime = 0.2
+		lastYOnFloor = global_position.y
 	
 	move_and_slide()
 	
