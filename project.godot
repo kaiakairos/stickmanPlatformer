@@ -26,11 +26,16 @@ window/stretch/mode="viewport"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/rmsmartshape/plugin.cfg")
+
 [file_customization]
 
 folder_colors={
 "res://addons/": "gray",
 "res://autoload/": "red",
+"res://examples/": "orange",
 "res://object_scenes/": "green",
 "res://sound/": "blue",
 "res://ui_scenes/": "purple",

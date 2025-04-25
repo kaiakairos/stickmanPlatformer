@@ -195,6 +195,7 @@ func _enter_state(new_state,old_state):
 				parent.animationPlayer.play("fallInstant")
 		states.wallSlide:
 			parent.animationPlayer.play("wallSlide")
+			parent.speed = 200.0
 		states.crouch:
 			parent.speed = 200.0
 			parent.setCrouchShape(true)
