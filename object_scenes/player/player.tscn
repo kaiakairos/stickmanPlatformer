@@ -235,7 +235,6 @@ floor_snap_length = 4.0
 script = ExtResource("1_adcoq")
 animationPlayer = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite")
-canWallJump = true
 
 [node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("label")]
 script = ExtResource("1_1gb37")
