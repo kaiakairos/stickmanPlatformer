@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm8ps5e31b8rq"]
+
+[ext_resource type="Texture2D" uid="uid://dyyskc6y1fvid" path="res://object_scenes/spikes/spikesprite.png" id="1_m0gfn"]
+[ext_resource type="Script" uid="uid://c4le6825ygd2h" path="res://object_scenes/spikes/spikes.gd" id="2_pnjs0"]
+
+[node name="Spikes" type="Line2D"]
+z_index = -1
+texture_repeat = 2
+width = 16.0
+texture = ExtResource("1_m0gfn")
+texture_mode = 1
+joint_mode = 2
+script = ExtResource("2_pnjs0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
