@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cesa11niflrwv"
-path="res://.godot/imported/placeHolderTileSet.png-26671a60c75c0a0b111e464c2690a1bb.ctex"
+uid="uid://de26tqt4a1hyn"
+path="res://.godot/imported/sprite.png-9ab9ffdae3ea6069fc870a99f1884e11.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://object_scenes/tileMap/placeHolderTileSet.png"
-dest_files=["res://.godot/imported/placeHolderTileSet.png-26671a60c75c0a0b111e464c2690a1bb.ctex"]
+source_file="res://object_scenes/switch/sprite.png"
+dest_files=["res://.godot/imported/sprite.png-9ab9ffdae3ea6069fc870a99f1884e11.ctex"]
 
 [params]
 

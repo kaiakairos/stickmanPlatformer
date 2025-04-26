@@ -1,9 +1,63 @@
-[gd_scene load_steps=21 format=3 uid="uid://droxaj3t4kpdp"]
+[gd_scene load_steps=35 format=3 uid="uid://droxaj3t4kpdp"]
 
 [ext_resource type="Script" uid="uid://chpcgny4y8gsf" path="res://object_scenes/player/state_machine.gd" id="1_1gb37"]
 [ext_resource type="Texture2D" uid="uid://dc2sl33mt41mb" path="res://object_scenes/player/spriteSheet.png" id="1_7jlmo"]
 [ext_resource type="Script" uid="uid://c3xwyudfgtxjf" path="res://object_scenes/player/player.gd" id="1_adcoq"]
+[ext_resource type="Material" uid="uid://crnv777kkv3a" path="res://zeeg/materials/playerOutline.tres" id="3_feo5d"]
 [ext_resource type="Script" uid="uid://3rs0ecw5hsd0" path="res://object_scenes/player/player_camera.gd" id="4_airh8"]
+[ext_resource type="Texture2D" uid="uid://4bbfvrr6lkls" path="res://object_scenes/player/flame.png" id="5_s2p7l"]
+[ext_resource type="Shader" uid="uid://c8ddtuke40k1f" path="res://object_scenes/player/canvasOutline.gdshader" id="6_gry15"]
+[ext_resource type="Texture2D" uid="uid://b3pb1yip64xyw" path="res://object_scenes/player/orbParticle.png" id="7_feo5d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3o8n5"]
+atlas = ExtResource("5_s2p7l")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gry15"]
+atlas = ExtResource("5_s2p7l")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_feo5d"]
+atlas = ExtResource("5_s2p7l")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4eg0y"]
+atlas = ExtResource("5_s2p7l")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lrx1"]
+atlas = ExtResource("5_s2p7l")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eho8v"]
+atlas = ExtResource("5_s2p7l")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v417t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3o8n5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gry15")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_feo5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4eg0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lrx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eho8v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 21.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1gb37"]
 size = Vector2(8, 14)
@@ -13,7 +67,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("sprite/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -30,7 +84,7 @@ step = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("sprite/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -46,7 +100,7 @@ length = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("sprite/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -63,7 +117,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("sprite/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -80,7 +134,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("sprite/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -96,7 +150,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("sprite/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -113,7 +167,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("sprite/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -131,7 +185,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("sprite/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -148,7 +202,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("sprite/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -164,7 +218,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("sprite/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -180,7 +234,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("sprite/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -197,7 +251,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("sprite/Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -226,7 +280,23 @@ _data = {
 [sub_resource type="LabelSettings" id="LabelSettings_adcoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_airh8"]
-size = Vector2(2, 10)
+size = Vector2(4, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4eg0y"]
+shader = ExtResource("6_gry15")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 2
+shader_parameter/inside = true
+shader_parameter/add_margins = false
+
+[sub_resource type="Curve" id="Curve_gry15"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_feo5d"]
+_data = [Vector2(0, 0.701242), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.711112, 0.0, 0, 0]
+point_count = 2
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animationPlayer", "sprite")]
 collision_layer = 2
@@ -234,18 +304,37 @@ floor_constant_speed = true
 floor_snap_length = 4.0
 script = ExtResource("1_adcoq")
 animationPlayer = NodePath("AnimationPlayer")
-sprite = NodePath("Sprite")
+sprite = NodePath("sprite/Sprite")
+canWallJump = true
+canSlide = true
+canChargeJump = true
 
-[node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("label")]
+[node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("label", "flame", "chargingParticles", "blastParticles", "explodeParticles")]
 script = ExtResource("1_1gb37")
 label = NodePath("../StateLabel")
+flame = NodePath("../sprite/flameSprite")
+chargingParticles = NodePath("../CanvasGroup/chargin")
+blastParticles = NodePath("../CanvasGroup/blast")
+explodeParticles = NodePath("../CanvasGroup/explose")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="sprite" type="CanvasGroup" parent="."]
+material = ExtResource("3_feo5d")
+
+[node name="Sprite" type="Sprite2D" parent="sprite"]
 position = Vector2(0, 7)
 texture = ExtResource("1_7jlmo")
 offset = Vector2(0, -9)
-hframes = 24
+hframes = 25
 frame = 1
+
+[node name="flameSprite" type="AnimatedSprite2D" parent="sprite"]
+visible = false
+modulate = Color(1, 1, 1, 0.760784)
+position = Vector2(0, -3)
+scale = Vector2(1.265, 1.265)
+sprite_frames = SubResource("SpriteFrames_v417t")
+frame_progress = 0.838039
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_1gb37")
@@ -279,6 +368,7 @@ position = Vector2(-3, 6)
 target_position = Vector2(-4, 0)
 
 [node name="StateLabel" type="Label" parent="."]
+visible = false
 offset_left = -70.0
 offset_top = -44.0
 offset_right = 70.0
@@ -288,6 +378,7 @@ label_settings = SubResource("LabelSettings_adcoq")
 horizontal_alignment = 1
 
 [node name="SpeedLabel" type="Label" parent="."]
+visible = false
 offset_left = -70.0
 offset_top = -65.0
 offset_right = 70.0
@@ -319,5 +410,54 @@ target_position = Vector2(0, -11)
 [node name="ceilingCollider2" type="RayCast2D" parent="."]
 position = Vector2(3, 5)
 target_position = Vector2(0, -11)
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_4eg0y")
+
+[node name="chargin" type="CPUParticles2D" parent="CanvasGroup"]
+emitting = false
+amount = 16
+texture = ExtResource("7_feo5d")
+emission_shape = 1
+emission_sphere_radius = 32.0
+gravity = Vector2(0, 0)
+radial_accel_min = -100.0
+radial_accel_max = -79.07
+scale_amount_curve = SubResource("Curve_gry15")
+color = Color(1, 1, 1, 0.203922)
+
+[node name="blast" type="CPUParticles2D" parent="CanvasGroup"]
+emitting = false
+amount = 64
+texture = ExtResource("7_feo5d")
+preprocess = 1.1
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 3.65
+initial_velocity_max = 9.05
+radial_accel_min = 13.1
+radial_accel_max = 100.0
+tangential_accel_min = -0.45
+tangential_accel_max = 0.4
+scale_amount_curve = SubResource("Curve_gry15")
+color = Color(1, 1, 1, 0.203922)
+
+[node name="explose" type="CPUParticles2D" parent="CanvasGroup"]
+emitting = false
+amount = 16
+texture = ExtResource("7_feo5d")
+lifetime = 0.25
+one_shot = true
+explosiveness = 0.79
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 139.54
+scale_amount_curve = SubResource("Curve_feo5d")
+color = Color(1, 1, 1, 0.203922)
 
 [connection signal="body_entered" from="DeathDetector" to="." method="_on_death_detector_body_entered"]

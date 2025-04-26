@@ -7,6 +7,10 @@ var states = {}
 @onready var parent = get_parent()
 
 @export var label :Label
+@export var flame :AnimatedSprite2D
+@export var chargingParticles :CPUParticles2D
+@export var blastParticles :CPUParticles2D
+@export var explodeParticles :CPUParticles2D
 
 func _ready() -> void:
 	add_state("idle")
@@ -18,6 +22,8 @@ func _ready() -> void:
 	add_state("crouch")
 	add_state("slide")
 	add_state("dead")
+	add_state("charging")
+	add_state("chargedash")
 	
 	set_state(states.idle)
 
@@ -52,11 +58,21 @@ func _state_logic(delta):
 		states.slide:
 			parent.slide(delta)
 			parent.lerpStretch(Vector2(1.0,1.0),1.0,delta)
-
+		states.charging:
+			parent.charging(delta)
+			parent.lerpStretch(Vector2(1.0,1.0),10.0,delta)
+		states.chargedash:
+			parent.charge(delta)
+			parent.lerpStretch(Vector2(1.0,1.0),10.0,delta)
+		
+		
 func _get_transition(delta):
 	
 	if parent.dead:
 		return states.dead
+		
+	if Input.is_action_pressed("charge") and parent.canCharge and parent.canChargeJump:
+		return states.charging
 	
 	match state:
 		states.idle:
@@ -72,6 +88,9 @@ func _get_transition(delta):
 			if !parent.canSlide:
 				return
 			if Input.is_action_pressed("crouch"):
+				return states.crouch
+			
+			if parent.isCeilingCollider():
 				return states.crouch
 			
 		states.run:
@@ -96,7 +115,10 @@ func _get_transition(delta):
 					return states.slide
 				else:
 					return states.crouch
-		
+			
+			if parent.isCeilingCollider():
+				return states.crouch
+			
 		states.skid:
 			
 			if parent.velocity.y < -1:
@@ -108,6 +130,9 @@ func _get_transition(delta):
 				return states.run
 			elif abs(parent.velocity.x) < 1:
 				return states.idle
+			
+			if parent.isCeilingCollider():
+				return states.crouch
 		
 		states.jump:
 			if parent.is_on_floor():
@@ -172,8 +197,14 @@ func _get_transition(delta):
 					return states.fall
 			if parent.dir == 0:
 				return states.crouch
-			
-			
+		states.charging:
+			if parent.chargeTicks < 0.0:
+				return states.chargedash
+		states.chargedash:
+			if parent.chargeTicks < 0.0:
+				return states.jump
+		
+		
 	return null
 
 func _enter_state(new_state,old_state):
@@ -221,7 +252,15 @@ func _enter_state(new_state,old_state):
 					parent.dir = -1
 				else:
 					parent.dir = 1
-
+		states.charging:
+			parent.chargeTicks = 0.25
+			flame.show()
+			flame.play("default")
+			chargingParticles.emitting = true
+		states.chargedash:
+			parent.chargeTicks = 0.01
+			blastParticles.emitting = true
+			explodeParticles.emitting = true
 func _exit_state(old_state, new_state):
 	match old_state:
 		states.run:
@@ -240,7 +279,12 @@ func _exit_state(old_state, new_state):
 			parent.floor_snap_length = 4.0
 			parent.floor_constant_speed = true
 			parent.sprite.rotation = 0.0
-
+		states.charging:
+			flame.hide()
+			chargingParticles.emitting = false
+		states.chargedash:
+			await get_tree().create_timer(1.0).timeout
+			blastParticles.emitting = false
 #### dont edit things below ####
 
 func _process(delta):

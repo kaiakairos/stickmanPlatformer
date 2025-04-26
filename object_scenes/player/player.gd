@@ -14,6 +14,7 @@ var checkPoint :Vector2 = Vector2.ZERO
 ## Player Abilities ##
 @export var canWallJump :bool = false
 @export var canSlide :bool = false
+@export var canChargeJump :bool = false
 
 
 ## yeah ##
@@ -33,6 +34,12 @@ var dead :bool = false
 var slideOffFloorTime :float = 0.5
 
 @onready var corpseScene = preload("uid://geucp7oenwe2")
+@onready var camera = $PlayerCamera
+
+var chargeTicks :float = 0.0
+var chargeDir :Vector2 = Vector2.ZERO
+
+var canCharge:bool = true
 
 func _ready() -> void:
 	checkPoint = global_position
@@ -41,6 +48,9 @@ func _process(delta: float) -> void:
 	$SpeedLabel.text = str( int( velocity.x ) )
 
 func movePlayer(delta):
+	
+	if camera.cameraFocused:
+		return
 	
 	dir = int( Input.is_action_pressed("move_right") ) - int( Input.is_action_pressed("move_left") )
 	
@@ -82,6 +92,7 @@ func movePlayer(delta):
 		coyoteDelayTimer = 0.1 # coyote time max
 		lastYOnFloor = global_position.y
 		accelDelayTimer = 0.0
+		canCharge = true
 	else:
 		coyoteDelayTimer -= delta
 		if Input.is_action_just_pressed("jump") and velocity.y > 0.5:
@@ -109,6 +120,9 @@ func movePlayer(delta):
 	
 	
 func slide(delta):
+	
+	if camera.cameraFocused:
+		return
 	
 	var isOnFloor :bool = is_on_floor()
 	
@@ -150,6 +164,7 @@ func slide(delta):
 		coyoteDelayTimer = 0.1
 		slideOffFloorTime = 0.2
 		lastYOnFloor = global_position.y
+		canCharge = true
 	
 	move_and_slide()
 	
@@ -162,7 +177,30 @@ func slide(delta):
 		dir = -1
 	elif !onSlope:
 		dir = 0
+
+func charging(delta):
 	
+	canCharge = false
+	
+	velocity = lerp(velocity,Vector2.ZERO,0.2)
+	move_and_slide()
+	chargeTicks -= delta
+	
+	var dirt = Vector2.ZERO
+	dirt.x = int( Input.is_action_pressed("move_right") ) - int( Input.is_action_pressed("move_left") )
+	dirt.y = int( Input.is_action_pressed("look_down") ) - int( Input.is_action_pressed("look_up") )
+	 
+	chargeDir = dirt
+	if chargeDir == Vector2.ZERO:
+		chargeDir = Vector2(dir,0)
+
+func charge(delta):
+	chargeTicks -= delta
+	velocity = chargeDir.normalized() * 600.0
+	speed = max(200.0,abs(velocity.x) * 0.75)
+	accelDelayTimer = 0.1
+	move_and_slide()
+
 func setStretch(newScale:Vector2) -> void:
 	sprite.scale = newScale
 
@@ -203,20 +241,28 @@ func killPlayer():
 	ins.setVelocity((velocity * 1.5) + Vector2(0,-200))
 	ins.global_position = global_position + Vector2(0,-8)
 	get_parent().call_deferred("add_child",ins)
-	hide()
+	sprite.hide()
 	await get_tree().create_timer(2.5).timeout
 	velocity = Vector2.ZERO
 	global_position = checkPoint
 	dead = false
-	show()
+	sprite.show()
 
 func setCrouchShape(isCrouching:bool):
 	if isCrouching:
 		$CollisionShape2D.shape.size.y = 3.0
 		$CollisionShape2D.position.y = 5.5
+		
+		$DeathDetector/CollisionShape2D.shape.size.y = 3.0
+		$DeathDetector/CollisionShape2D.position.y = 4.5
+		
 	else:
 		$CollisionShape2D.shape.size.y = 14.0
 		$CollisionShape2D.position.y = 0.0
+		
+		$DeathDetector/CollisionShape2D.shape.size.y = 10.0
+		$DeathDetector/CollisionShape2D.position.y = 0.0
+		
 
 func isCeilingCollider() -> bool:
 	if $ceilingCollider.is_colliding():

@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://crnv777kkv3a"]
+
+[ext_resource type="Shader" uid="uid://c8ddtuke40k1f" path="res://object_scenes/player/canvasOutline.gdshader" id="1_1uuna"]
+
+[resource]
+shader = ExtResource("1_1uuna")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/width = 2.0
+shader_parameter/pattern = 2
+shader_parameter/inside = false
+shader_parameter/add_margins = false

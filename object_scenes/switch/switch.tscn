@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://dleyu57g6iq2q"]
+
+[ext_resource type="Texture2D" uid="uid://de26tqt4a1hyn" path="res://object_scenes/switch/sprite.png" id="1_dxf5t"]
+[ext_resource type="Script" uid="uid://bsklbbgrfnsh1" path="res://object_scenes/switch/switch.gd" id="1_p6qfi"]
+
+[sub_resource type="Curve" id="Curve_p6qfi"]
+_limits = [0.0, 8.0, 0.0, 1.0]
+_data = [Vector2(0, 3.93044), 0.0, 12.2087, 0, 0, Vector2(0.332298, 6.77267), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.70857, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_p6qfi"]
+colors = PackedColorArray(1, 1, 1, 1, 0.960784, 0.921569, 0.498039, 1)
+
+[sub_resource type="Gradient" id="Gradient_26ql6"]
+colors = PackedColorArray(0.994, 1, 0.82, 1, 1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6qfi"]
+size = Vector2(30, 20)
+
+[node name="Switch" type="Node2D"]
+script = ExtResource("1_p6qfi")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 5)
+emitting = false
+amount = 3
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(-0.2, -1)
+spread = 25.12
+gravity = Vector2(0, 400)
+initial_velocity_min = 131.42
+initial_velocity_max = 182.8
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_curve = SubResource("Curve_p6qfi")
+color_ramp = SubResource("Gradient_p6qfi")
+color_initial_ramp = SubResource("Gradient_26ql6")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_dxf5t")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_p6qfi")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

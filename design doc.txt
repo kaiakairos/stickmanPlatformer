@@ -1,17 +1,27 @@
  3 abilities to acquire
-    - wall slide/jump
-    - slide
-    - ???
+	- wall slide/jump
+	- slide
+	- ???
 
 abilities should be able to be used anywhere and be multi purpose
 should enhance the players overall movement
 
 level design:
-    metroid vania, backtracking, dark souls doors, all that
+	metroid vania, backtracking, dark souls doors, all that
 
-    player needs to collect 10 something orbs ( can be whatever ) to open a door and beat the game
-    opening the door leads to a cool time based escape level something, cinematic
+	player needs to collect 10 something orbs ( can be whatever ) to open a door and beat the game
+	opening the door leads to a cool time based escape level something, cinematic
 
-    when introducing the door, have the door be one of the first things the player sees. then have the only way forwards lead to the first collectable. after obtaining the first collectable, have the forward moving path lead back into the door room, where the player can then realize that the collectable they picked up affected the door. in the room where you get the collectable, place a switch that opens a door in the first starting room, which makes sure that players will have to pass through the door room
+	when introducing the door, have the door be one of the first things the player sees. then have the only way forwards lead to the first collectable. after obtaining the first collectable, have the forward moving path lead back into the door room, where the player can then realize that the collectable they picked up affected the door. in the room where you get the collectable, place a switch that opens a door in the first starting room, which makes sure that players will have to pass through the door room
 
-    have hidden areas, that become visible when the player enters them
+	have hidden areas, that become visible when the player enters them
+
+level objects:
+	trigger that sets a timer. at the end of the timer, the player will spontaneously die. a second trigger will disable the timer, allowing the player to continue. This will occasionally force the player to move fast.
+	
+	switch that the player must activate manually. the switch can activate doors
+	
+	checkpoint
+	
+	crumbly platform of course 
+	

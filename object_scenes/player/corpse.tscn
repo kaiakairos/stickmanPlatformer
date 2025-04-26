@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://geucp7oenwe2"]
+[gd_scene load_steps=7 format=3 uid="uid://geucp7oenwe2"]
 
+[ext_resource type="Material" uid="uid://crnv777kkv3a" path="res://zeeg/materials/playerOutline.tres" id="1_2jvdy"]
 [ext_resource type="Texture2D" uid="uid://bimgbqv7umkcu" path="res://object_scenes/player/corpseHead.png" id="1_dsj3i"]
 [ext_resource type="Script" uid="uid://hcl27lfa4ydh" path="res://object_scenes/player/corpse.gd" id="1_y8rjc"]
 [ext_resource type="PhysicsMaterial" uid="uid://dyjy5skgprsft" path="res://object_scenes/player/CorpsePhysics.tres" id="2_yeidu"]
@@ -10,7 +11,8 @@ radius = 3.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yeidu"]
 size = Vector2(2.54362, 6.16209)
 
-[node name="corpse" type="Node2D"]
+[node name="corpse" type="CanvasGroup"]
+material = ExtResource("1_2jvdy")
 script = ExtResource("1_y8rjc")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
@@ -72,6 +74,7 @@ offset_bottom = 5.0
 [node name="RigidBody2D5" type="RigidBody2D" parent="."]
 position = Vector2(-3, 6)
 rotation = 0.462894
+scale = Vector2(1, 1)
 collision_layer = 0
 physics_material_override = ExtResource("2_yeidu")
 
