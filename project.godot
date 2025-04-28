@@ -15,13 +15,17 @@ warnings/check_invalid_track_paths=false
 [application]
 
 config/name="platformermetroidvania"
-run/main_scene="uid://bp718bagim8mv"
+run/main_scene="uid://coymqwhrh27w4"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*res://autoload/global.gd"
+
+[debug]
+
+settings/stdout/print_fps=true
 
 [display]
 

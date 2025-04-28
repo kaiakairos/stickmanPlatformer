@@ -37,8 +37,11 @@ func do() -> void:
 	poly.owner = owner
 	# TODO: Make this a option at some point
 	poly.modulate.a = 0.3
-	poly.visible = false
+	poly.visible = true
 	_shape.collision_polygon_node_path = _shape.get_path_to(poly)
+	
+	var _new_array = _shape.get_point_array().clone(true)
+	_shape.set_point_array(_new_array)
 
 
 func undo() -> void:
@@ -53,4 +56,3 @@ func undo() -> void:
 	_shape.owner = owner
 	grandparent.move_child(_shape, _saved_index)
 	_shape.position = _saved_pos
-

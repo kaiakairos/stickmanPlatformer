@@ -74,7 +74,6 @@ offset_bottom = 5.0
 [node name="RigidBody2D5" type="RigidBody2D" parent="."]
 position = Vector2(-3, 6)
 rotation = 0.462894
-scale = Vector2(1, 1)
 collision_layer = 0
 physics_material_override = ExtResource("2_yeidu")
 

@@ -257,6 +257,7 @@ func _enter_state(new_state,old_state):
 			flame.show()
 			flame.play("default")
 			chargingParticles.emitting = true
+			parent.chargeVel = max(600.0,parent.velocity.length())
 		states.chargedash:
 			parent.chargeTicks = 0.01
 			blastParticles.emitting = true

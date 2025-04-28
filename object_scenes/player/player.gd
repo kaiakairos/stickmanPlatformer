@@ -38,7 +38,7 @@ var slideOffFloorTime :float = 0.5
 
 var chargeTicks :float = 0.0
 var chargeDir :Vector2 = Vector2.ZERO
-
+var chargeVel :float = 600.0
 var canCharge:bool = true
 
 func _ready() -> void:
@@ -193,6 +193,7 @@ func charging(delta):
 	chargeDir = dirt
 	if chargeDir == Vector2.ZERO:
 		chargeDir = Vector2(dir,0)
+	
 
 func charge(delta):
 	chargeTicks -= delta

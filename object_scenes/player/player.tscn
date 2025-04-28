@@ -305,9 +305,6 @@ floor_snap_length = 4.0
 script = ExtResource("1_adcoq")
 animationPlayer = NodePath("AnimationPlayer")
 sprite = NodePath("sprite/Sprite")
-canWallJump = true
-canSlide = true
-canChargeJump = true
 
 [node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("label", "flame", "chargingParticles", "blastParticles", "explodeParticles")]
 script = ExtResource("1_1gb37")
@@ -367,18 +364,7 @@ target_position = Vector2(-4, 0)
 position = Vector2(-3, 6)
 target_position = Vector2(-4, 0)
 
-[node name="StateLabel" type="Label" parent="."]
-visible = false
-offset_left = -70.0
-offset_top = -44.0
-offset_right = 70.0
-offset_bottom = -21.0
-text = "penis"
-label_settings = SubResource("LabelSettings_adcoq")
-horizontal_alignment = 1
-
 [node name="SpeedLabel" type="Label" parent="."]
-visible = false
 offset_left = -70.0
 offset_top = -65.0
 offset_right = 70.0
@@ -387,9 +373,19 @@ text = "0"
 label_settings = SubResource("LabelSettings_adcoq")
 horizontal_alignment = 1
 
+[node name="StateLabel" type="Label" parent="."]
+offset_left = -70.0
+offset_top = -44.0
+offset_right = 70.0
+offset_bottom = -21.0
+text = "penis"
+label_settings = SubResource("LabelSettings_adcoq")
+horizontal_alignment = 1
+
 [node name="PlayerCamera" type="Camera2D" parent="."]
 process_mode = 3
 top_level = true
+position = Vector2(320, 320)
 script = ExtResource("4_airh8")
 
 [node name="DeathDetector" type="Area2D" parent="."]
