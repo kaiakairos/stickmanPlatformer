@@ -12,6 +12,7 @@ var jumpPower :float = 330.0
 var checkPoint :Vector2 = Vector2.ZERO
 
 ## Player Abilities ##
+@export var canJump :bool = false
 @export var canWallJump :bool = false
 @export var canSlide :bool = false
 @export var canChargeJump :bool = false
@@ -73,7 +74,7 @@ func movePlayer(delta):
 
 	## jumping
 	jumpDelayTimer -= delta
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and canJump:
 		jumpDelayTimer = 0.1
 	
 	if jumpDelayTimer > 0.0 and isOnFloor:
@@ -282,4 +283,4 @@ func checkCrouchGaps() -> int:
 func rotateOnSlope():
 	if $slopeCastDetector.is_colliding():
 		var normal :Vector2 = $slopeCastDetector.get_collision_normal()
-		sprite.rotation = lerp_angle(sprite.rotation,normal.rotated((PI/2)).angle(),0.25)
+		sprite.rotation = normal.rotated((PI/2)).angle() #lerp_angle(sprite.rotation,normal.rotated((PI/2)).angle(),0.25)

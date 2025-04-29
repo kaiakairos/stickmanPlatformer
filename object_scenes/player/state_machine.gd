@@ -71,7 +71,7 @@ func _get_transition(delta):
 	if parent.dead:
 		return states.dead
 		
-	if Input.is_action_pressed("charge") and parent.canCharge and parent.canChargeJump:
+	if Input.is_action_pressed("charge") and parent.canCharge and parent.canChargeJump and !parent.isCeilingCollider():
 		return states.charging
 	
 	match state:

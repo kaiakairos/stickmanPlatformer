@@ -305,6 +305,7 @@ floor_snap_length = 4.0
 script = ExtResource("1_adcoq")
 animationPlayer = NodePath("AnimationPlayer")
 sprite = NodePath("sprite/Sprite")
+canJump = true
 
 [node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("label", "flame", "chargingParticles", "blastParticles", "explodeParticles")]
 script = ExtResource("1_1gb37")
@@ -400,12 +401,12 @@ position = Vector2(0, 5)
 target_position = Vector2(0, 14)
 
 [node name="ceilingCollider" type="RayCast2D" parent="."]
-position = Vector2(-3, 5)
-target_position = Vector2(0, -11)
+position = Vector2(-3, 6)
+target_position = Vector2(0, -12.5)
 
 [node name="ceilingCollider2" type="RayCast2D" parent="."]
-position = Vector2(3, 5)
-target_position = Vector2(0, -11)
+position = Vector2(3, 6)
+target_position = Vector2(0, -12.5)
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 z_index = -1
