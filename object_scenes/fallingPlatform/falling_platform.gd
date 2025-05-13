@@ -29,6 +29,7 @@ func reset():
 	encountered = false
 	$CollisionShape2D.call_deferred("set_disabled",false)
 	$visual.position.x = 0
+	time = 0.0
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if encountered:

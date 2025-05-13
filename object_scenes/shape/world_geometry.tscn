@@ -27,7 +27,7 @@ width = 1.0
 
 [sub_resource type="Resource" id="Resource_igvoa"]
 script = ExtResource("3_m5kbk")
-position = Vector2(176, 0)
+position = Vector2(48, 0)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
 properties = SubResource("Resource_m5kbk")
@@ -40,20 +40,20 @@ width = 1.0
 
 [sub_resource type="Resource" id="Resource_orudj"]
 script = ExtResource("3_m5kbk")
-position = Vector2(176, 176)
+position = Vector2(48, 48)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
 properties = SubResource("Resource_0xxkm")
 
 [sub_resource type="Resource" id="Resource_d56or"]
 script = ExtResource("2_80o7i")
-texture_idx = 6
+texture_idx = 0
 flip = false
 width = 1.0
 
 [sub_resource type="Resource" id="Resource_6k1s6"]
 script = ExtResource("3_m5kbk")
-position = Vector2(0, 176)
+position = Vector2(0, 48)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
 properties = SubResource("Resource_d56or")
@@ -84,7 +84,7 @@ _point_order = PackedInt32Array(0, 1, 2, 3, 4)
 _constraints = {
 Vector2i(0, 4): 15
 }
-_next_key = 6
+_next_key = 5
 _material_overrides = {}
 tessellation_stages = 3
 tessellation_tolerance = 6.0

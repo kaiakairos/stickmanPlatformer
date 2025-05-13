@@ -284,3 +284,9 @@ func rotateOnSlope():
 	if $slopeCastDetector.is_colliding():
 		var normal :Vector2 = $slopeCastDetector.get_collision_normal()
 		sprite.rotation = normal.rotated((PI/2)).angle() #lerp_angle(sprite.rotation,normal.rotated((PI/2)).angle(),0.25)
+
+func setCheckpoint():
+	if $checkpoint.is_colliding():
+		checkPoint = $checkpoint.get_collision_point() + Vector2(0,-7)
+	else:
+		checkPoint = global_position

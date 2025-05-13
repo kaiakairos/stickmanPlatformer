@@ -8,7 +8,7 @@ func _ready() -> void:
 	if startOpen:
 		$AnimationPlayer.play("open")
 		$StaticBody2D/CollisionShape2D.call_deferred("set_disabled",true)
-
+		openNow = true
 	
 func activate():
 	

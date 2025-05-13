@@ -54,6 +54,7 @@ func _state_logic(delta):
 			parent.movePlayer(delta)
 			parent.lerpStretch(Vector2(1.0,1.0),1.0,delta)
 		states.crouch:
+			parent.move_and_slide()
 			parent.lerpStretch(Vector2(1.0,1.0),1.0,delta)
 		states.slide:
 			parent.slide(delta)

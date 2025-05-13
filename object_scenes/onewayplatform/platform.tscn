@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://jpdcvpncnm13"]
+
+[ext_resource type="Texture2D" uid="uid://cih0snmucd1fi" path="res://object_scenes/onewayplatform/onewayPlatform.png" id="1_gy5fb"]
+[ext_resource type="Script" uid="uid://cotwsjmmqjfw7" path="res://object_scenes/onewayplatform/platform.gd" id="2_2txtt"]
+
+[node name="Platform" type="Line2D"]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 73, 0)
+width = 8.0
+texture = ExtResource("1_gy5fb")
+texture_mode = 1
+script = ExtResource("2_2txtt")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+one_way_collision = true

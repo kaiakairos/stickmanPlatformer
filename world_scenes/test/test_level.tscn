@@ -1530,6 +1530,9 @@ curve_bake_interval = 20.0
 
 [node name="Player" parent="." instance=ExtResource("2_foxc3")]
 position = Vector2(56, 580)
+canWallJump = true
+canSlide = true
+canChargeJump = true
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 

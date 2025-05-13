@@ -1,0 +1,132 @@
+[gd_scene load_steps=21 format=3 uid="uid://h2ig7a700mvr"]
+
+[ext_resource type="Script" uid="uid://b4lapcok7c6el" path="res://object_scenes/movingPlatform/moving_platform.gd" id="1_tec8i"]
+[ext_resource type="PackedScene" uid="uid://ce6poa5bq1r3a" path="res://object_scenes/shape/world_geometry.tscn" id="2_ex0lq"]
+[ext_resource type="Script" uid="uid://cy2flhr8jw87a" path="res://addons/rmsmartshape/vertex_properties.gd" id="3_nrxx7"]
+[ext_resource type="Script" uid="uid://bmbiepdw7bm65" path="res://addons/rmsmartshape/shapes/point.gd" id="4_bpswx"]
+[ext_resource type="Script" uid="uid://dvtn6g4nxln7d" path="res://addons/rmsmartshape/shapes/point_array.gd" id="5_vj7uh"]
+
+[sub_resource type="Resource" id="Resource_ex0lq"]
+script = ExtResource("3_nrxx7")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_xwhdq"]
+script = ExtResource("4_bpswx")
+position = Vector2(-16, 0)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_ex0lq")
+
+[sub_resource type="Resource" id="Resource_bpswx"]
+script = ExtResource("3_nrxx7")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_5meis"]
+script = ExtResource("4_bpswx")
+position = Vector2(64, 0)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_bpswx")
+
+[sub_resource type="Resource" id="Resource_p6m0m"]
+script = ExtResource("3_nrxx7")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_thc8h"]
+script = ExtResource("4_bpswx")
+position = Vector2(56, 16)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_p6m0m")
+
+[sub_resource type="Resource" id="Resource_cm5ov"]
+script = ExtResource("3_nrxx7")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_76xxv"]
+script = ExtResource("4_bpswx")
+position = Vector2(-8, 16)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_cm5ov")
+
+[sub_resource type="Resource" id="Resource_3hisn"]
+script = ExtResource("3_nrxx7")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_cewqu"]
+script = ExtResource("4_bpswx")
+position = Vector2(-16, 0)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_3hisn")
+
+[sub_resource type="Resource" id="Resource_d1unb"]
+script = ExtResource("3_nrxx7")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_nrxx7"]
+script = ExtResource("4_bpswx")
+position = Vector2(-16, 8)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_d1unb")
+
+[sub_resource type="Resource" id="Resource_p5h8v"]
+script = ExtResource("3_nrxx7")
+texture_idx = 0
+flip = false
+width = 1.0
+
+[sub_resource type="Resource" id="Resource_vj7uh"]
+script = ExtResource("4_bpswx")
+position = Vector2(64, 8)
+point_in = Vector2(0, 0)
+point_out = Vector2(0, 0)
+properties = SubResource("Resource_p5h8v")
+
+[sub_resource type="Resource" id="Resource_0v3tg"]
+script = ExtResource("5_vj7uh")
+_points = {
+0: SubResource("Resource_xwhdq"),
+1: SubResource("Resource_5meis"),
+2: SubResource("Resource_thc8h"),
+3: SubResource("Resource_76xxv"),
+4: SubResource("Resource_cewqu"),
+5: SubResource("Resource_nrxx7"),
+6: SubResource("Resource_vj7uh")
+}
+_point_order = PackedInt32Array(0, 1, 6, 2, 3, 5, 4)
+_constraints = {
+Vector2i(0, 4): 15
+}
+_next_key = 7
+_material_overrides = {}
+tessellation_stages = 3
+tessellation_tolerance = 6.0
+curve_bake_interval = 20.0
+
+[node name="movingPlatform" type="AnimatableBody2D"]
+script = ExtResource("1_tec8i")
+
+[node name="WorldGeometry" parent="." instance=ExtResource("2_ex0lq")]
+position = Vector2(-24, 0)
+_points = SubResource("Resource_0v3tg")
+collision_polygon_node_path = NodePath("../CollisionPolygon2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+modulate = Color(1, 1, 1, 0.3)
+position = Vector2(-22, -3)
+polygon = PackedVector2Array(-18, 3, 62, 3, 62, 11, 54, 19, -10, 19, -18, 11, -18, 3)

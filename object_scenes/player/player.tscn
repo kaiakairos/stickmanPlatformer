@@ -457,4 +457,7 @@ initial_velocity_max = 139.54
 scale_amount_curve = SubResource("Curve_feo5d")
 color = Color(1, 1, 1, 0.203922)
 
+[node name="checkpoint" type="RayCast2D" parent="."]
+target_position = Vector2(0, 128)
+
 [connection signal="body_entered" from="DeathDetector" to="." method="_on_death_detector_body_entered"]

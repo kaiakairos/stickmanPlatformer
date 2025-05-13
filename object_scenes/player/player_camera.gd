@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 		await tween.finished
 		get_tree().paused = false
 		
-		parent.checkPoint = parent.global_position
+		#parent.checkPoint = parent.global_position
 
 func sendSignal():
 	await get_tree().create_timer(0.4).timeout
